@@ -1,5 +1,5 @@
 // Karma configuration
-// Generated on Fri Aug 04 2017 20:53:38 GMT+0800 (CST)
+// Generated on Sun Aug 06 2017 12:39:14 GMT+0800 (中国标准时间)
 
 module.exports = function(config) {
   config.set({
@@ -15,10 +15,10 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'node_modules/should/should.js',
-      'js/*.js',
-      'quz/*.js',
-      'test/*.js'
+      './js/*.js',
+      './quz/*.js',
+      './test/*.js',
+      './node_modules/should/should.js'
     ],
 
 
@@ -30,6 +30,13 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      'test/*.js':['webpack','babel']
+    },
+
+    babelPreprocessor:{
+        options: {
+          presets: ['es2015']
+        }
     },
 
 
@@ -58,12 +65,12 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Firefox'],
+    browsers: ['Chrome'],
 
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: true,
+    singleRun: false,
 
     // Concurrency level
     // how many browser should be started simultaneous

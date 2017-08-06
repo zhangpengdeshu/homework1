@@ -8,7 +8,29 @@
  * @returns {List}
  */
 function dcate(A, B) {
+    /**
+     * {
+     *    head: 4,
+     *    tail: {
+     *      head: 6,
+     *      tail: {
+     *        head: 7,
+     *        tail: {
+     *         }
+     *      }
+     *    }
+     * }
+     * 
+     */
 	/** Fill in here **/
+    var temp = A,L;
+    for(L = temp; L !== null; L = L.tail){
+        if(L.tail === null){
+            L.tail = B;
+            break;
+        }
+    }
+    return temp;
 }
 
 /**
@@ -24,4 +46,20 @@ function dcate(A, B) {
  */
 function sub(L, start, len) {
 	/** Fill in here **/
+	var T,
+       index=0,
+       length = 0,
+       result = [];
+    for(T=L;T!==null;T=T.tail){
+        if(index>=start && length < len){
+            console.log(T.head);
+            result.push(T.head);
+            length++;
+        }
+        index++;
+
+    }
+    console.log(result);
+    return List.list(result)
+
 }
